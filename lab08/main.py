@@ -9,23 +9,21 @@ with open("../australian.dat", "r") as file:
         # australia.append(list(map(lambda x: float(x), line.split())))
 
 a = australia[0]
-b = australia[5]
-c = australia[10]
-d = australia[20]
-
-# mierzy odleglosc dla n wymiarowego punktu od a do b
-def metryka_euklidesowa(a, b):
-    c = 0
-    length = max(len(a), len(b)) - 1
-    for i in range(length):
-        element_i = (a[i] - b[i]) ** 2
-        c += element_i
-    return math.sqrt(c)
+b = australia[1]
+c = australia[2]
+d = australia[3]
 
 
-# print(metryka_euklidesowa(a, b))
-# print(metryka_euklidesowa(a, c))
-# print(metryka_euklidesowa(a, d))
+def metryka_euklidesowa(v1, v2):
+    length = max(len(v1), len(v2)) - 1
+    wynik = sum((v1[i] - v2[i]) ** 2 for i in range(length))
+    # wynik = sum((a - b) ** 2 for a, b in zip(v1[:-1], v2[:-1]))
+    return math.sqrt(wynik)
+
+
+print("Metryka euklidesowa: ", metryka_euklidesowa(a, b))
+print("Metryka euklidesowa: ", metryka_euklidesowa(a, c))
+print("Metryka euklidesowa: ", metryka_euklidesowa(a, d))
 
 # 15-wymiarowy punkt x do testów
 vec_x = [1 for _ in range(15)]
@@ -42,11 +40,8 @@ def slownik_decyzyjny(matrice, x):
 
 
 slownik = slownik_decyzyjny(australia, vec_x)
-
-# print(slownik[0][:5])
-# print(slownik[1][:5])
-# print(slownik[2][:5])  # KeyError: klucz 2 nie istnieje
-# print(list(slownik.values())[1][137])  # [key][nth-element]
+print("Słownik decyzyjny: ", slownik[0][:3])
+print("Słownik decyzyjny: ", slownik[1][:3])
 
 # zwraca liste tupli na wzor: (klasa_decyzyjna, wynik_metryki_euklidesowej)
 def mierzymy(x, matrice):
@@ -103,80 +98,6 @@ def metryka_euklidesowa2(a, b):
     return math.sqrt(np.dot(v, v))
 
 
-# def srednia(wektor):
-#     n = len(wektor)
-#     return np.sum(wektor) / n
-
-
-# def srednia_lekcja(wektor):
-#     n = len(wektor)
-#     return np.dot(wektor, np.ones(n)) / n
-
-
-# def wariancja(wektor):
-#     av = srednia(wektor)
-#     n = len(wektor)
-#     s = av * np.ones(n)
-#     u = (wektor - s) ** 2
-#     return np.sum(u) / n
-
-
-# def wariancja_lekcja(wektor):
-#     pass
-
-
-# def odchylenie_std(wektor):
-#     return math.sqrt(wariancja(wektor))
-
-
-# lista = np.array([1, 2, 3, 40])
-# """
-# print(srednia(lista))
-# print(wariancja(lista))
-# print(odchylenie_std(lista))
-# print(srednia_lekcja(lista))
-# """
-# test = []
-# with open("test.dat", "r") as file:
-#     for line in file:
-#         test.append(list(map(lambda x: float(x), line.split())))
-
-# # punkty testowe z wykladu: (2,1), (5,2), (7,3), (8,3)
-# def linia_trendu():
-#     pass
-
-
-# import math
-# import random as rd
-# import numpy as np
-
-
-# def loadData(filename):
-#     dane = []
-
-#     with open(filename, "r") as data:
-#         for wiersz in data:
-#             dane.append(
-#                 list(map(lambda e: float(e), wiersz.replace("\n", "").split(" ")))
-#             )
-
-#     return dane
-
-
-# def monte_carlo(function, a, b, pointNum):
-#     maxValue = max(map(lambda i: function(i), np.linspace(a, b, pointNum, True)))
-#     points = [(rd.uniform(a, b), rd.uniform(0, maxValue)) for x in range(pointNum)]
-
-#     lower = upper = 0
-#     for x in points:
-#         if x[1] < function(x[0]):
-#             lower += 1
-#         else:
-#             upper += 1
-
-#     return maxValue * (b - a) * (lower / (lower + upper))
-
-
 # def riemann(function, a, b, precision):
 #     points = tuple(map(lambda i: function(i), np.linspace(a, b, precision, True)))
 #     diff = (b - a) / (precision - 1)
@@ -199,58 +120,12 @@ def metryka_euklidesowa2(a, b):
 #     return area
 
 
-# filename = "australian.dat"
-# data = loadData(filename)
-# # result = kolorowanie(data, 2)
-
-# # for x in result:
-# #   if x not in data:
-# #       print("fail")
-# #       break
-
 # print(monte_carlo(math.sin, 0, 1, 10000))
 # print(riemann(math.sin, 0, 1, 10000))
 # print(trapmann(math.sin, 0, 1, 10000))
 
 # # Oblicz całkę monte-carlo dla funkcji
 # # Oblicz całkę riemana dla funkcji
-
-# import math as m
-
-# matrice = []
-# with open("australian.dat", "r") as file:
-#     matrice = [list(map(lambda a: float(a), line.split())) for line in file]
-
-# matrice_2 = [x[:14] for x in matrice]  # matrice
-
-
-def srednia_aryt_matrice(lista):
-    ones = np.ones((len(lista), 1))
-    return float(1 / len(lista)) * np.dot(np.array(lista), ones)[0]
-
-
-def wariancja_matrice(lista):
-    srednia = srednia_aryt_matrice(lista)
-    ones = np.ones((1, len(lista))) * srednia
-    minus = np.array(lista) - ones
-    return float(1 / len(lista)) * np.dot(minus[0], minus[0].T)
-
-
-def odchylenie_std_matrice(lista):
-    return math.sqrt(wariancja_matrice(lista))
-
-
-# print(srednia_aryt_matrice(matrice_2[0]))
-# print(wariancja_matrice(matrice_2[0]))
-# print(odchylenie_std_matrice(matrice_2[0]))
-
-
-# def wariancja():
-#     srednia = srednia_aryt_matrice(lista)
-#     ones = np.ones((1, len(lista))) * srednia
-
-
-# import numpy as np
 
 
 # def n_kowariancja(macierz):
@@ -271,17 +146,9 @@ def odchylenie_std_matrice(lista):
 #     vector_1 = np.ones(len(vector))
 #     return np.dot(vector, vector_1) / len(vector)
 
-
-# def wariancja(vector):
-#     sr = srednia(vector)
-#     vector_srednich = sr * np.ones(len(vector))
-#     vector_1 = vector - vector_srednich
-#     return np.dot(vector_1, vector_1) / len(vector)
-
-
 # print(wariancja(a))
 # print(srednia(a))
 
-print(srednia_aryt_matrice(a))
-print(wariancja_matrice(a))
+print(srednia_arytmetyczna(a))
+print(wariancja(a))
 print(odchylenie_std_matrice(a))

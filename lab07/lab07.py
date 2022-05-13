@@ -14,8 +14,7 @@ W oparciu o operacje wektorowe proszę napisać funkcję do obliczania średniej
 """
 
 
-def arithmetic_average(x):
-    """srednia arytmetyczna"""
+def srednia_arytmetyczna(x):
     return sum(x[:-1]) / (len(x) - 1)
     # suma = 0
     # for i in x:
@@ -24,59 +23,56 @@ def arithmetic_average(x):
     # return suma / len(x)
 
 
-def daml_var(x):
-    """wariancja"""
+def wariancja(x):
     m = sum(x) / len(x)
     var = sum((i - m) ** 2 for i in x) / len(x)
     return var
 
 
-def daml_cov(x, y):
-    """cowariancja"""
+def kowariancja(x, y):
     m = sum(x) / len(x)
     m2 = sum(y) / len(y)
     return sum([(xi - m) * (yi - m2) for xi, yi in zip(x, y)]) / (len(x) - 1)
 
 
-def std_dev(ls):
-    """odchylenie standardowe"""
+def odchylenie_standardowe(ls):
     n = len(ls)
     mean = sum(ls) / n
     var = sum((x - mean) ** 2 for x in ls) / n
-    std_dev = var**0.5
-    return std_dev
+    odchylenie_standardowe = var**0.5
+    return odchylenie_standardowe
 
 
 # print(australia)
-print(arithmetic_average(australia[0]))
-print(daml_var(australia[0]))
-print(std_dev(australia[0]))
+print(srednia_arytmetyczna(australia[0]))
+print(wariancja(australia[0]))
+print(odchylenie_standardowe(australia[0]))
 print()
 
 # australia = [1,2,3]
 
 
-def new_arithmetic_average(x):
+def new_srednia_arytmetyczna(x):
     return (np.transpose(x) * np.dot(x)) / len(x)
     # return (np.array(x) * np.dot(x)) / len(x)
 
 
-def new_daml_var(x):
+def new_wariancja(x):
     """wariancja"""
     srednia = sum(x) / len(x)
     var = sum((i - srednia) ** 2 for i in x) / len(x)
     return var
 
 
-def new_std_dev(ls):
+def new_odchylenie_standardowe(ls):
     """odchylenie standardowe"""
     n = len(ls)
     mean = sum(ls) / n
     var = sum((x - mean) ** 2 for x in ls) / n
-    std_dev = var**0.5
-    return std_dev
+    odchylenie_standardowe = var**0.5
+    return odchylenie_standardowe
 
 
-# print(new_arithmetic_average(australia[0])) # poprawic
-print(new_daml_var(australia[0]))
-print(new_std_dev(australia[0]))  # dokonczyc w domu
+# print(new_srednia_arytmetyczna(australia[0])) # poprawic
+print(new_wariancja(australia[0]))
+print(new_odchylenie_standardowe(australia[0]))  # dokonczyc w domu
