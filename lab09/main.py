@@ -6,7 +6,7 @@ def iloczyn_skalarny(v):
     return np.transpose(v) @ v
 
 
-def dlugosc(v):
+def dlugosc_wektora(v):
     return math.sqrt(iloczyn_skalarny(v))
 
 
@@ -17,13 +17,6 @@ def pomnoz_przez_skalar(skalar, v):
     # wynik = np.array(map(lambda x: x * skalar, v))
     # wynik = [skalar*x for x in v]
     return v
-
-
-A = np.array([[1, 1, 0], [0, 1, 1]])
-x = np.array(A[0])
-
-print(iloczyn_skalarny(x))
-print(dlugosc(x))
 
 
 def proj(v, u):
@@ -39,11 +32,11 @@ def create_u(v, u):
 
 
 def create_Q(*args, **kwargs):
-    macierz = np.array(args[0])
+    matrice = np.array(args[0])
     for arg in args[1:]:
-        macierz = np.append(macierz, arg, axis=1)
+        matrice = np.append(matrice, arg)
 
-    return macierz
+    return matrice
 
 
 def create_R(Q, A):
@@ -56,6 +49,14 @@ def create_R(Q, A):
     return Q.T @ A
 
 
+A = np.array([[1, 1, 0], [0, 1, 1]])
+x = np.array(A[0])
+print(iloczyn_skalarny(x))
+print(dlugosc_wektora(x))
+
+
+v1 = u1 = np.array([1, 2, 3])
+v2 = np.array([3, 2, 1])
 e1 = create_e(u1)
 u2 = create_u(v2, u1)
 e2 = create_e(u2)

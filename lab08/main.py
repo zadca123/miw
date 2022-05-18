@@ -149,6 +149,6 @@ def metryka_euklidesowa2(a, b):
 # print(wariancja(a))
 # print(srednia(a))
 
-print(srednia_arytmetyczna(a))
-print(wariancja(a))
-print(odchylenie_std_matrice(a))
+# print(srednia_arytmetyczna(a))
+# print(wariancja(a))
+# print(odchylenie_std_matrice(a))

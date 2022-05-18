@@ -72,7 +72,7 @@ np.set_printoptions(suppress=True)
 
 # czasami dziala czasami nie na tej macierzy... idk
 n = 2
-A = np.random.randint(0.0, 3.0, size=(n, n), dtype=np.uint8)
+A = np.random.randint(0, 3, size=(n, n), dtype=np.uint8)
 print(A)
 
 Q, R = rozklad_Q_R(A)
