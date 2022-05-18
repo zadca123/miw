@@ -40,12 +40,6 @@ def create_Q(*args, **kwargs):
 
 
 def create_R(Q, A):
-    # R = []
-    # for e, v in zip(Q.T, A):
-    #     print(np.dot(e, v))
-    #     # R.append(np.dot(e, v))
-    # return np.array(R)
-    # # return np.dot(Q, A)
     return Q.T @ A
 
 
