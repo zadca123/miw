@@ -3,7 +3,7 @@ import random
 import numpy as np
 
 australia = []
-with open("../australian.dat", "r") as file:
+with open("../../australian.dat", "r") as file:
     for line in file:
         australia.append(list(map(lambda x: float(x), line.split())))
 
@@ -50,9 +50,8 @@ def kolorowanie(matrice, ile_klas=2):
         vec[-1] = random.randint(0, ile_klas - 1)
 
     while przelacznik:
-        print("Loop...")
-        srodki_masy = []
         przelacznik = False
+        srodki_masy = []
         for i in range(ile_klas):
             srodki_masy.append(srodek_masy(matrice, i))
 
