@@ -25,7 +25,7 @@ def baza_ortoGonalna(M):
 # ma wyjsc diagonalna macierz jednostkowa ( przemnozyc przez diagonalna przez transpozycje )
 def baza_ortoNormalna(M):
     M_jedn = []
-    for vec in M:
+    for vec in M.T:
         dlugosc = dlugosc_wektora(vec, vec)
         vec = vec / dlugosc
         M_jedn.append(vec)
