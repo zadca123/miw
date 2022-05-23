@@ -8,6 +8,7 @@ australia = []
 with open("../australian.dat", "r") as file:
     for line in file:
         australia.append(list(map(lambda x: float(x), line.split())))
+
 """
 Praca Domowa.
 W oparciu o operacje wektorowe proszę napisać funkcję do obliczania średniej arytmetycznej oraz wariancji i odchylenia standardowego
@@ -16,11 +17,13 @@ W oparciu o operacje wektorowe proszę napisać funkcję do obliczania średniej
 
 def srednia_arytmetyczna(x):
     return sum(x[:-1]) / (len(x) - 1)
-    # suma = 0
-    # for i in x:
-    #     suma += i
-    # # return suma / len(x) if x else 0
-    # return suma / len(x)
+
+
+# suma = 0
+# for i in x:
+#     suma += i
+# # return suma / len(x) if x else 0
+# return suma / len(x)
 
 
 def wariancja(x):
@@ -53,8 +56,8 @@ print()
 
 
 def new_srednia_arytmetyczna(x):
-    return (np.transpose(x) * np.dot(x)) / len(x)
-    # return (np.array(x) * np.dot(x)) / len(x)
+    # return (np.array(x) * np.dot(x,x)) / len(x)
+    return (np.transpose(x) * np.dot(x, x)) / len(x)
 
 
 def new_wariancja(x):

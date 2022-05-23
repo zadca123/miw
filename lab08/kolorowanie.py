@@ -3,14 +3,9 @@ import random
 import numpy as np
 
 australia = []
-with open("../../australian.dat", "r") as file:
+with open("../australian.dat", "r") as file:
     for line in file:
         australia.append(list(map(lambda x: float(x), line.split())))
-
-a = australia[0]
-b = australia[5]
-c = australia[10]
-d = australia[20]
 
 # mierzy odleglosc dla n wymiarowego punktu od a do b
 def metryka_euklidesowa(a, b):

@@ -9,9 +9,9 @@ with open("../australian.dat", "r") as file:
         # australia.append(list(map(lambda x: float(x), line.split())))
 
 a = australia[0]
-b = australia[1]
-c = australia[2]
-d = australia[3]
+b = australia[2]
+c = australia[3]
+d = australia[4]
 
 
 def metryka_euklidesowa(v1, v2):
@@ -59,6 +59,7 @@ def grupujemy(lista_tupli):
     slownik = {}
     for tupla in lista_tupli:
         slownik.setdefault(tupla[0], []).append(tupla[1])
+
     return slownik
 
 
@@ -72,6 +73,7 @@ def suma(slownik, k):
         tupla[1].sort()
         ucieta = tupla[1][:k]
         slownik[tupla[0]] = sum(ucieta)
+
     return slownik
 
 
@@ -81,8 +83,10 @@ def dopasuj(slownik):
     print(lista)
     if len(lista) == 1:
         return lista[0][0]
+
     if lista[0][1] == lista[1][1]:
         return None
+
     else:
         return lista[0][0]
 
@@ -96,59 +100,3 @@ def metryka_euklidesowa2(a, b):
     b = np.array(b)
     v = b - a
     return math.sqrt(np.dot(v, v))
-
-
-# def riemann(function, a, b, precision):
-#     points = tuple(map(lambda i: function(i), np.linspace(a, b, precision, True)))
-#     diff = (b - a) / (precision - 1)
-
-#     area = 0
-#     for x in points[1:]:
-#         area += diff * x
-
-#     return area
-
-
-# def trapmann(function, a, b, precision):
-#     points = tuple(map(lambda i: function(i), np.linspace(a, b, precision, True)))
-#     diff = (b - a) / (precision - 1)
-
-#     area = 0
-#     for x in range(1, precision):
-#         area += diff * (points[x] + points[x - 1]) / 2
-
-#     return area
-
-
-# print(monte_carlo(math.sin, 0, 1, 10000))
-# print(riemann(math.sin, 0, 1, 10000))
-# print(trapmann(math.sin, 0, 1, 10000))
-
-# # Oblicz całkę monte-carlo dla funkcji
-# # Oblicz całkę riemana dla funkcji
-
-
-# def n_kowariancja(macierz):
-#     return np.dot(macierz.T, macierz)
-
-
-# def odwrotnosc_n(macierz):
-#     return np.linalg.inv(macierz)
-
-
-# def lewa_odwrotnosc(macierz):
-#     kow = n_kowariancja(macierz)
-#     odwrotnosc = odwrotnosc_n(kow)
-#     return np.dot(odwrotnosc, macierz.T)
-
-
-# def srednia(vector):
-#     vector_1 = np.ones(len(vector))
-#     return np.dot(vector, vector_1) / len(vector)
-
-# print(wariancja(a))
-# print(srednia(a))
-
-# print(srednia_arytmetyczna(a))
-# print(wariancja(a))
-# print(odchylenie_std_matrice(a))
