@@ -42,7 +42,7 @@ def odchylenie_standardowe(ls):
     n = len(ls)
     mean = sum(ls) / n
     var = sum((x - mean) ** 2 for x in ls) / n
-    odchylenie_standardowe = var**0.5
+    odchylenie_standardowe = var ** 0.5
     return odchylenie_standardowe
 
 
@@ -72,10 +72,10 @@ def new_odchylenie_standardowe(ls):
     n = len(ls)
     mean = sum(ls) / n
     var = sum((x - mean) ** 2 for x in ls) / n
-    odchylenie_standardowe = var**0.5
+    odchylenie_standardowe = var ** 0.5
     return odchylenie_standardowe
 
 
-# print(new_srednia_arytmetyczna(australia[0])) # poprawic
+print(new_srednia_arytmetyczna(australia[0]))  # poprawic
 print(new_wariancja(australia[0]))
 print(new_odchylenie_standardowe(australia[0]))  # dokonczyc w domu

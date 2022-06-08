@@ -47,8 +47,6 @@ def rozklad_A_K(A, k):
     return matrice
 
 
-np.set_printoptions(suppress=True)
-
 # A = np.array(
 #     [
 #         [1, 1, 1],

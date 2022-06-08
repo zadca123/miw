@@ -3,7 +3,7 @@ from numpy.linalg import eigh, norm
 
 A = np.array([[-5, 2, 3], [2, 5, 1], [-3, 1, -5]])
 
-print(A)
+print(A, eigh)
 
 ev, V = eigh(A.T @ A)
 

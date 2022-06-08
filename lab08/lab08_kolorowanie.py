@@ -148,23 +148,3 @@ print(data.minimal().a)
 print(data.minimal().b)
 print(data.minimal().grupa)
 print(data.minimal().odleglosc)
-
-# print(data.dataset)
-# print(data.comb_data)
-
-
-# data.plot_figure()
-# print(data.dicc)
-# for i in data.odleglosci:
-#     print(i.a, i.b, i.odleglosc)
-
-
-"""TODO
-wagi kropek
-
-funkcja1_oblicz_waga_kropek()
-funkcja2_waga_kropek()
-funkcja3_minimum_waga(zrior_kropek)
-funkcja4_srodek_ciezkosci(zrior_kropek)
-28 luty 1:10 na wykladzie
-"""
