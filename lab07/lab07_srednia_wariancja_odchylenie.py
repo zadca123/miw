@@ -19,13 +19,6 @@ def srednia_arytmetyczna(x):
     return sum(x[:-1]) / (len(x) - 1)
 
 
-# suma = 0
-# for i in x:
-#     suma += i
-# # return suma / len(x) if x else 0
-# return suma / len(x)
-
-
 def wariancja(x):
     m = sum(x) / len(x)
     var = sum((i - m) ** 2 for i in x) / len(x)
@@ -38,10 +31,10 @@ def kowariancja(x, y):
     return sum([(xi - m) * (yi - m2) for xi, yi in zip(x, y)]) / (len(x) - 1)
 
 
-def odchylenie_standardowe(ls):
-    n = len(ls)
-    mean = sum(ls) / n
-    var = sum((x - mean) ** 2 for x in ls) / n
+def odchylenie_standardowe(x):
+    n = len(x)
+    mean = sum(x) / n
+    var = sum((i - mean) ** 2 for i in x) / n
     odchylenie_standardowe = var ** 0.5
     return odchylenie_standardowe
 
@@ -67,15 +60,15 @@ def new_wariancja(x):
     return var
 
 
-def new_odchylenie_standardowe(ls):
+def new_odchylenie_standardowe(x):
     """odchylenie standardowe"""
-    n = len(ls)
-    mean = sum(ls) / n
-    var = sum((x - mean) ** 2 for x in ls) / n
+    n = len(x)
+    mean = sum(x) / n
+    var = sum((i - mean) ** 2 for i in x) / n
     odchylenie_standardowe = var ** 0.5
     return odchylenie_standardowe
 
 
-print(new_srednia_arytmetyczna(australia[0]))  # poprawic
+print(new_srednia_arytmetyczna(australia[0]))
 print(new_wariancja(australia[0]))
-print(new_odchylenie_standardowe(australia[0]))  # dokonczyc w domu
+print(new_odchylenie_standardowe(australia[0]))
